@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/397b00c9d6.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue"></script>
     <script src="lessons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Coursework 1</title>
 </head>
@@ -13,7 +14,7 @@
     <div id="app">
         <main>
             <div v-for = "lesson in lessons">
-                <h1 v-text="lesson.Subject"></h1>
+                <h1 v-text="lesson.subject"></h1>
             </div>
         </main>
     </div>
