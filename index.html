@@ -14,7 +14,12 @@
     <div id="app">
         <main>
             <div v-for = "lesson in lessons">
-                <h1 v-text="lesson.subject"></h1>
+                <div>
+                    <figure>
+                        <img v-bind:src="lesson.image" alt="">
+                    </figure>
+                    <h2 v-text="lesson.subject"></h2>
+                </div>
             </div>
         </main>
     </div>
