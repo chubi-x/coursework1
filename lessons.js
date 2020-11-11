@@ -1,82 +1,82 @@
 let lessons = [
     {
         id: 1,
-        Subject: "Math",
-        Location: "London",
-        Price: "300",
-        Spaces: 5,
+        subject: "Math",
+        location: "London",
+        price: "300",
+        spaces: 5,
         image: ""
     }
     ,{
         id: 2,
-        Subject: "English",
-        Location: "Manchester",
-        Price: "250",
-        Spaces: 10,
+        subject: "English",
+        location: "Manchester",
+        price: "250",
+        spaces: 10,
         image: ""
     }
     ,{
         id: 3,
-        Subject: "Chemistry",
-        Location: "Tottenham",
-        Price: "900",
-        Spaces: 15,
+        subject: "Chemistry",
+        location: "Tottenham",
+        price: "900",
+        spaces: 15,
         image: ""
     }
     ,{
         id: 4,
-        Subject: "Physics",
-        Location: "Essex",
-        Price: "200",
-        Spaces: 6,
+        subject: "Physics",
+        location: "Essex",
+        price: "200",
+        spaces: 6,
         image: ""
     }
     ,{
         id: 5,
-        Subject: "Calculus",
-        Location: "Sussex",
-        Price: "150",
-        Spaces: 12,
+        subject: "Calculus",
+        location: "Sussex",
+        price: "150",
+        spaces: 12,
         image: ""
     }
     ,{
         id: 6,
-        Subject: "Statistics",
-        Location: "Chelsea",
-        Price: "100",
-        Spaces: 20,
+        subject: "Statistics",
+        location: "Chelsea",
+        price: "100",
+        spaces: 20,
         image: ""
     }
     ,{
         id: 7,
-        Subject: "Linguistics",
-        Location: "Dublin",
-        Price: "900",
-        Spaces: 13,
+        subject: "Linguistics",
+        location: "Dublin",
+        price: "900",
+        spaces: 13,
         image: ""
     }
     ,{
         id: 8,
-        Subject: "Astronomy",
-        Location: "Edinburgh",
-        Price: "1000",
-        Spaces: 3,
+        subject: "Astronomy",
+        location: "Edinburgh",
+        price: "1000",
+        spaces: 3,
         image: ""
     }
     ,{
         id: 9,
-        Subject: "Sociology",
-        Location: "Brighton",
-        Price: "150",
-        Spaces: 5,
+        subject: "Sociology",
+        location: "Brighton",
+        price: "150",
+        spaces: 5,
         image: ""
     }
     ,{
         id: 10,
-        Subject: "Algebra",
-        Location: "Liverpool",
-        Price: "450",
-        Spaces: 12,
+        subject: "Algebra",
+        location: "Liverpool",
+        price: "450",
+        spaces: 12,
         image: ""
     }
 ]

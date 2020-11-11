@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/397b00c9d6.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue"></script>
-
+    <script src="lessons.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Coursework 1</title>
 </head>
 <body>
     <div id="app">
-        
+        <main>
+            <div v-for = "lesson in lessons">
+                <h1 v-text="lesson.Subject"></h1>
+            </div>
+        </main>
     </div>
     <script>
         let app = new Vue({
-            el: "app",
-            data:{}
+            el: "#app",
+            data:{
+                lessons: lessons,
+            }
         })
     </script>
 </body>
