@@ -15,6 +15,11 @@
 </head>
 
 <body>
+  
+  <!-- As a heading -->
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+  </nav>
     <div id="app">
         <main>
             <p>Sort by:</p>
@@ -36,21 +41,23 @@
             </label>
 
             <div class="lessons" v-for="lesson in sortedLessons">
-                <div>
-                    <figure>
-                        <img v-bind:src="lesson.image" alt="lesson image">
-                    </figure>
-                    <h1>Subject : {{lesson.subject}}</h1>
+                <div class="card" style="width: 18rem;">
+                        <img v-bind:src="lesson.image" alt="lesson image" class="card-img-top">
+                        <div class="card-body">
+                            <h1 class="card-title">Subject : {{lesson.subject}}</h1>
                     <h1>Location : {{lesson.location}}</h1>
                     <h1>Price : ${{lesson.price}}</h1>
                     <h1>Spaces : {{lesson.spaces}}</h1>
-                    <button v-on:click="addToCart(lesson) " v-if="canAddToCart(lesson)">Add to cart</button>
-                    <button disabled="disabled" v-else>Add to cart</button>
+                    <button class="btn btn-primary" v-on:click="addToCart(lesson) " v-if="canAddToCart(lesson)">Add to cart</button>
+                    <button class="btn btn-primary" disabled="disabled" v-else>Add to cart</button>
+                    <br>
                     <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
                     <span
                         v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only {{lesson.spaces - cartCount(lesson.id)}} spaces
                         left !</span>
                     <span v-else>Buy now!</span>
+                        </div>
+                    
                 </div>
             </div>
         </main>
