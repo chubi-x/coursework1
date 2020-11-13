@@ -1,3 +1,16 @@
 #app{
     font-family: 'ABeeZee', sans-serif;
 }
+.lessons{
+    /* display:flex; 
+    justify-content: center; */
+    padding: 10px;
+}
+.lessons figure img{
+    width: 160px;
+    height: 150px;
+    float: left;
+}
+.lessons h1{
+    font-size: 20px;
+}
