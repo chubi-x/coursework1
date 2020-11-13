@@ -17,6 +17,7 @@
 <body>
     <div id="app">
         <main>
+            <p>Sort by:</p>
             <label for="subject">Subject: </label> <input type="radio" name="subject" value="subject" id=""
                 v-model="sortType">
             <label for="location">Location: </label> <input type="radio" name="location" value="location" id=""
@@ -24,6 +25,15 @@
             <label for="price">Price: </label> <input type="radio" name="price" value="price" id="" v-model="sortType">
             <label for="spaces">Spaces: </label> <input type="radio" name="spaces" value="spaces" id=""
                 v-model="sortType">
+            <p>Sort in:</p>    
+            <label for="ascending">
+                Ascending Order
+                <input type="radio" name="ascending" value="ascending" v-model="sortBy">
+            </label>
+            <label for="descending">
+                Descending Order
+                <input type="radio" name="descending" value="descending" v-model="sortBy">
+            </label>
 
             <div class="lessons" v-for="lesson in sortedLessons">
                 <div>
@@ -38,7 +48,7 @@
                     <button disabled="disabled" v-else>Add to cart</button>
                     <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
                     <span
-                        v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only {{lesson.spaces - cartCount(lesson.id)}}
+                        v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only {{lesson.spaces - cartCount(lesson.id)}} spaces
                         left !</span>
                     <span v-else>Buy now!</span>
                 </div>
@@ -51,6 +61,7 @@
             data: {
                 lessons: lessons,
                 sortType: "",
+                sortBy: "",
                 cart: []
             },
             methods: {
@@ -75,12 +86,23 @@
                 sortedLessons() {
                     let lessonsArray = this.lessons.slice(0);
                     let sortValue = this.sortType;
+                    let sortBy = this.sortBy;
                     function compare(a, b) {
-                        if (a[sortValue] > b[sortValue])
+                        if(sortBy == "ascending"){
+                            if (a[sortValue] > b[sortValue])
                             return 1;
                         if (a[sortValue] < b[sortValue])
                             return -1;
                         return 0;
+                        }
+                        else  if(sortBy =="descending"){
+                            if (a[sortValue] < b[sortValue])
+                            return 1;
+                        if (a[sortValue] > b[sortValue])
+                            return -1;
+                        return 0;
+                        }
+                       
                     }
                     return lessonsArray.sort(compare);
                 }
