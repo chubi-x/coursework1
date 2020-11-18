@@ -18,9 +18,10 @@
     <div id="app">
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1">Navbar</span>
-            <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="showCart" v-if="cartIsNotEmpty() ">Cart</button>
-          </nav>
-        
+            <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="showCart"
+                v-if="cartIsNotEmpty() ">Cart</button>
+        </nav>
+
         <main>
             <div v-if="showLessons">
                 <p>Sort by:</p>
@@ -28,10 +29,11 @@
                     v-model="sortType">
                 <label for="location">Location: </label> <input type="radio" name="location" value="location" id=""
                     v-model="sortType">
-                <label for="price">Price: </label> <input type="radio" name="price" value="price" id="" v-model="sortType">
+                <label for="price">Price: </label> <input type="radio" name="price" value="price" id=""
+                    v-model="sortType">
                 <label for="spaces">Spaces: </label> <input type="radio" name="spaces" value="spaces" id=""
                     v-model="sortType">
-                <p>Sort in:</p>    
+                <p>Sort in:</p>
                 <label for="ascending">
                     Ascending Order
                     <input type="radio" name="ascending" value="ascending" v-model="sortBy">
@@ -40,43 +42,51 @@
                     Descending Order
                     <input type="radio" name="descending" value="descending" v-model="sortBy">
                 </label>
-    
+
                 <div class="lessons" v-for="lesson in sortedLessons">
                     <div class="card" style="width: 18rem;">
-                            <img v-bind:src="lesson.image" alt="lesson image" class="card-img-top">
-                            <div class="card-body">
-                                <h1 class="card-title">Subject : {{lesson.subject}}</h1>
-                        <h1>Location : {{lesson.location}}</h1>
-                        <h1>Price : ${{lesson.price}}</h1>
-                        <h1>Spaces : {{lesson.spaces}}</h1>
-                        <button class="btn btn-primary" v-on:click="addToCart(lesson) " v-if="canAddToCart(lesson)">Add to cart</button>
-                        <button class="btn btn-primary" disabled="disabled" v-else>Add to cart</button>
-                        <br>
-                        <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
-                        <span
-                            v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only {{lesson.spaces - cartCount(lesson.id)}} spaces
-                            left !</span>
-                        <span v-else>Buy now!</span>
-                            </div>  
+                        <img v-bind:src="lesson.image" alt="lesson image" class="card-img-top">
+                        <div class="card-body">
+                            <h1 class="card-title">Subject : {{lesson.subject}}</h1>
+                            <h1>Location : {{lesson.location}}</h1>
+                            <h1>Price : ${{lesson.price}}</h1>
+                            <h1>Spaces : {{lesson.spaces}}</h1>
+                            <button class="btn btn-primary" v-on:click="addToCart(lesson) "
+                                v-if="canAddToCart(lesson)">Add to cart</button>
+                            <button class="btn btn-primary" disabled="disabled" v-else>Add to cart</button>
+                            <br>
+                            <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
+                            <span v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only
+                                {{lesson.spaces - cartCount(lesson.id)}} spaces
+                                left !</span>
+                            <span v-else>Buy now!</span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div v-else>
                 <h2>Shopping Cart</h2>
                 <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="showCart">Lessons</button>
-                <div v-for="(cartItem,index) in cart" class="lessons">  
+                <div v-for="(cartItem,index) in cart" class="lessons">
                     <div class="card" style="width: 18rem;">
                         <img v-bind:src="cartItem.image" alt="lesson image" class="card-img-top">
                         <div class="card-body">
                             <h1 class="card-title">Subject : {{cartItem.subject}}</h1>
-                    <h1>Location : {{cartItem.location}}</h1>
-                    <h1>Price : ${{cartItem.price}}</h1>
-                    <h1>Spaces : {{cartItem.spaces}}</h1>
-                    <br>
-                    <button type="button" class="btn btn-danger" v-on:click="removeItem(cartItem)">Remove</button>
-                        </div>  
+                            <h1>Location : {{cartItem.location}}</h1>
+                            <h1>Price : ${{cartItem.price}}</h1>
+                            <h1>Spaces : {{cartItem.spaces}}</h1>
+                            <br>
+                            <button type="button" class="btn btn-danger"
+                                v-on:click="removeItem(cartItem)">Remove</button>
+                        </div>
+                    </div>
                 </div>
-                </div>
+                <h1>Checkout</h1>
+                <form action="">
+                    <input type="text " required v-model="checkout.name" v-on:keypress="isLetter($event)">
+                    <input type="number" required v-model="checkout.phone">
+                    <button v-on:click="submitOrder()" v-if="validOrder()">Checkout</button>
+                </form>
             </div>
         </main>
     </div>
@@ -88,7 +98,11 @@
                 sortType: "",
                 sortBy: "",
                 showLessons: true,
-                cart: []
+                cart: [],
+                checkout: {
+                    name: "",
+                    phone: ""
+                }
             },
             methods: {
                 addToCart(lesson) {
@@ -98,7 +112,7 @@
                 canAddToCart(lesson) {
                     return lesson.spaces > this.cartCount(lesson.id);
                 },
-                cartIsNotEmpty(){
+                cartIsNotEmpty() {
                     return this.cart.length > 0;
                 },
                 cartCount(id) {
@@ -110,11 +124,23 @@
                     }
                     return count;
                 },
-                showCart(){
-                    this.showLessons = this.showLessons ? false:true
+                showCart() {
+                    this.showLessons = this.showLessons ? false : true
                 },
-                removeItem(index){
-                  this.cart.splice(index,1);
+                removeItem(index) {
+                    this.cart.splice(index, 1);
+                },
+                isLetter(e) {
+                    let char = String.fromCharCode(e.keyCode); // Get the character
+                    if (/^[A-Za-z]+$/.test(char)) 
+                    return true; // Match with regex 
+                    else e.preventDefault(); // If not match, don't add to input text
+                },
+                submitOrder() {
+                    alert("Order Submitted!");
+                },
+                validOrder() {
+                    return this.checkout.name && this.checkout.phone
                 }
             },
             computed: {
@@ -123,21 +149,20 @@
                     let sortValue = this.sortType;
                     let sortBy = this.sortBy;
                     function compare(a, b) {
-                        if(sortBy == "ascending"){
+                        if (sortBy == "ascending") {
                             if (a[sortValue] > b[sortValue])
-                            return 1;
-                        if (a[sortValue] < b[sortValue])
-                            return -1;
-                        return 0;
-                        }
-                        else  if(sortBy =="descending"){
+                                return 1;
                             if (a[sortValue] < b[sortValue])
-                            return 1;
-                        if (a[sortValue] > b[sortValue])
-                            return -1;
-                        return 0;
+                                return -1;
+                            return 0;
                         }
-                       
+                        else if (sortBy == "descending") {
+                            if (a[sortValue] < b[sortValue])
+                                return 1;
+                            if (a[sortValue] > b[sortValue])
+                                return -1;
+                            return 0;
+                        }
                     }
                     return lessonsArray.sort(compare);
                 }
