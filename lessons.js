@@ -12,7 +12,7 @@ let lessons = [
         subject: "English",
         location: "Manchester",
         price: "250",
-        spaces: 10,
+        spaces: 5,
         image: "images/english.jpg"
     }
     ,{
@@ -20,7 +20,7 @@ let lessons = [
         subject: "Chemistry",
         location: "Tottenham",
         price: "900",
-        spaces: 15,
+        spaces: 5,
         image: "images/chemistry.jpg"
     }
     ,{
@@ -28,7 +28,7 @@ let lessons = [
         subject: "Physics",
         location: "Essex",
         price: "200",
-        spaces: 6,
+        spaces: 5,
         image: "images/physics.jpg"
     }
     ,{
@@ -36,7 +36,7 @@ let lessons = [
         subject: "Calculus",
         location: "Sussex",
         price: "150",
-        spaces: 12,
+        spaces: 5,
         image: "images/calculus.jpg"
     }
     ,{
@@ -44,7 +44,7 @@ let lessons = [
         subject: "Statistics",
         location: "Chelsea",
         price: "100",
-        spaces: 20,
+        spaces: 5,
         image: "images/statistics.jpg"
     }
     ,{
@@ -52,7 +52,7 @@ let lessons = [
         subject: "Linguistics",
         location: "Dublin",
         price: "900",
-        spaces: 13,
+        spaces: 5,
         image: "images/linguistics.jpg"
     }
     ,{
@@ -60,7 +60,7 @@ let lessons = [
         subject: "Astronomy",
         location: "Edinburgh",
         price: "1000",
-        spaces: 3,
+        spaces: 5,
         image: "images/astronomy.jpg"
     }
     ,{
@@ -76,7 +76,7 @@ let lessons = [
         subject: "Algebra",
         location: "Liverpool",
         price: "450",
-        spaces: 12,
+        spaces: 5,
         image: "images/algebra.jpg"
     }
 ]
