@@ -15,15 +15,20 @@
 </head>
 
 <body>
+    <!--vue app -->
     <div id="app">
+        <!-- navbar -->
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1">Navbar</span>
+            <!-- cart button -->
             <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="showCart"
                 v-if="cartIsNotEmpty() ">Cart</button>
         </nav>
 
         <main>
+            <!-- lessons page -->
             <div v-if="showLessons">
+                <!-- sorting functionality -->
                 <p>Sort by:</p>
                 <label for="subject">Subject: </label> <input type="radio" name="subject" value="subject" id=""
                     v-model="sortType">
@@ -42,51 +47,76 @@
                     Descending Order
                     <input type="radio" name="descending" value="descending" v-model="sortBy">
                 </label>
-
-                <div class="lessons" v-for="lesson in sortedLessons">
-                    <div class="card" style="width: 18rem;">
-                        <img v-bind:src="lesson.image" alt="lesson image" class="card-img-top">
-                        <div class="card-body">
-                            <h1 class="card-title">Subject : {{lesson.subject}}</h1>
-                            <h1>Location : {{lesson.location}}</h1>
-                            <h1>Price : ${{lesson.price}}</h1>
-                            <h1>Spaces : {{lesson.spaces}}</h1>
-                            <button class="btn btn-primary" v-on:click="addToCart(lesson) "
-                                v-if="canAddToCart(lesson)">Add to cart</button>
-                            <button class="btn btn-primary" disabled="disabled" v-else>Add to cart</button>
-                            <br>
-                            <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
-                            <span v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only
-                                {{lesson.spaces - cartCount(lesson.id)}} spaces
-                                left !</span>
-                            <span v-else>Buy now!</span>
+                <!-- lessons container -->
+                <div class="container">
+                    <div class="row">
+                        <!-- lessons list -->
+                        <div class="lessons col" v-for="lesson in sortedLessons">
+                            <div class="card" style="width: 18rem;">
+                                <!-- lesson image -->
+                                <img v-bind:src="lesson.image" alt="lesson image" class="card-img-top">
+                                <div class="card-body">
+                                    <!-- lesson description -->
+                                    <h1 class="card-title">Subject : {{lesson.subject}}</h1>
+                                    <h1>Location : {{lesson.location}}</h1>
+                                    <h1>Price : ${{lesson.price}}</h1>
+                                    <h1>Spaces : {{lesson.spaces}}</h1>
+                                    <!-- add to cart button -->
+                                    <button class="btn btn-primary" v-on:click="addToCart(lesson) "
+                                        v-if="canAddToCart(lesson)">Add to cart</button>
+                                        <!-- disabled button that shows when space is 0 -->
+                                    <button class="btn btn-primary" disabled="disabled" v-else>Add to cart</button>
+                                    <br>
+                                    <!-- space information  countdown -->
+                                    <span v-if="lesson.spaces === cartCount(lesson.id)">All out!</span>
+                                    <span v-else-if="lesson.spaces - cartCount(lesson.id) <=5">Only
+                                        {{lesson.spaces - cartCount(lesson.id)}} spaces
+                                        left !</span>
+                                    <span v-else>Buy now!</span>
+                                </div>
+                            </div>
                         </div>
+
+
+
                     </div>
                 </div>
             </div>
+            <!-- shopping cart page -->
             <div v-else>
                 <h2>Shopping Cart</h2>
+                <!--  button that goes back to lessons page -->
                 <button class="btn btn-outline-success my-2 my-sm-0" v-on:click="showCart">Lessons</button>
-                <div v-for="(cartItem,index) in cart" class="lessons">
-                    <div class="card" style="width: 18rem;">
-                        <img v-bind:src="cartItem.image" alt="lesson image" class="card-img-top">
-                        <div class="card-body">
-                            <h1 class="card-title">Subject : {{cartItem.subject}}</h1>
-                            <h1>Location : {{cartItem.location}}</h1>
-                            <h1>Price : ${{cartItem.price}}</h1>
-                            <h1>Spaces : {{cartItem.spaces}}</h1>
-                            <br>
-                            <button type="button" class="btn btn-danger"
-                                v-on:click="removeItem(cartItem)">Remove</button>
+                <!-- cart container -->
+                <div class="container">
+                    <div class="row">
+                        <!-- cart items list -->
+                        <div v-for="(cartItem,index) in cart" class="lessons">
+                            <div class="card" style="width: 18rem;">
+                                <img v-bind:src="cartItem.image" alt="lesson image" class="card-img-top">
+                                <div class="card-body">
+                                    <h1 class="card-title">Subject : {{cartItem.subject}}</h1>
+                                    <h1>Location : {{cartItem.location}}</h1>
+                                    <h1>Price : ${{cartItem.price}}</h1>
+                                    <h1>Spaces : {{cartItem.spaces}}</h1>
+                                    <br>
+                                    <!-- remove from cart button -->
+                                    <button type="button" class="btn btn-danger"
+                                        v-on:click="removeItem(cartItem)">Remove</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="checkout-page">
                 <h1>Checkout</h1>
-                <form action="">
+                <!-- checkout form -->
+                <form>
                     <input type="text " required v-model="checkout.name" v-on:keypress="isLetter($event)">
                     <input type="number" required v-model="checkout.phone">
-                    <button v-on:click="submitOrder()" v-if="validOrder()">Checkout</button>
+                    <button v-on:click="submitOrder()" v-if="validOrder()" class="btn btn-success">Checkout</button>
                 </form>
+            </div>
             </div>
         </main>
     </div>
@@ -132,8 +162,8 @@
                 },
                 isLetter(e) {
                     let char = String.fromCharCode(e.keyCode); // Get the character
-                    if (/^[A-Za-z]+$/.test(char)) 
-                    return true; // Match with regex 
+                    if (/^[A-Za-z*\s]+$/.test(char))
+                        return true; // Match with regex 
                     else e.preventDefault(); // If not match, don't add to input text
                 },
                 submitOrder() {
