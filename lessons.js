@@ -1,7 +1,7 @@
 let lessons = [
     {
         id: 1,
-        subject: "Math",
+        topic: "Math",
         location: "London",
         price: "300",
         spaces: 5,
@@ -9,7 +9,7 @@ let lessons = [
     }
     ,{
         id: 2,
-        subject: "English",
+        topic: "English",
         location: "Manchester",
         price: "250",
         spaces: 5,
@@ -17,7 +17,7 @@ let lessons = [
     }
     ,{
         id: 3,
-        subject: "Chemistry",
+        topic: "Chemistry",
         location: "Tottenham",
         price: "900",
         spaces: 5,
@@ -25,7 +25,7 @@ let lessons = [
     }
     ,{
         id: 4,
-        subject: "Physics",
+        topic: "Physics",
         location: "Essex",
         price: "200",
         spaces: 5,
@@ -33,7 +33,7 @@ let lessons = [
     }
     ,{
         id: 5,
-        subject: "Calculus",
+        topic: "Calculus",
         location: "Sussex",
         price: "150",
         spaces: 5,
@@ -41,7 +41,7 @@ let lessons = [
     }
     ,{
         id: 6,
-        subject: "Statistics",
+        topic: "Statistics",
         location: "Chelsea",
         price: "100",
         spaces: 5,
@@ -49,7 +49,7 @@ let lessons = [
     }
     ,{
         id: 7,
-        subject: "Linguistics",
+        topic: "Linguistics",
         location: "Dublin",
         price: "900",
         spaces: 5,
@@ -57,7 +57,7 @@ let lessons = [
     }
     ,{
         id: 8,
-        subject: "Astronomy",
+        topic: "Astronomy",
         location: "Edinburgh",
         price: "1000",
         spaces: 5,
@@ -65,7 +65,7 @@ let lessons = [
     }
     ,{
         id: 9,
-        subject: "Sociology",
+        topic: "Sociology",
         location: "Brighton",
         price: "150",
         spaces: 5,
@@ -73,10 +73,11 @@ let lessons = [
     }
     ,{
         id: 10,
-        subject: "Algebra",
+        topic: "Algebra",
         location: "Liverpool",
         price: "450",
         spaces: 5,
         image: "images/algebra.jpg"
     }
 ]
+
